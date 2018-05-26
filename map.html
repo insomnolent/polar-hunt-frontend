@@ -15,6 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/full.css" rel="stylesheet">
+    <link href="css/map.css" rel="stylesheet">
 
   </head>
 
@@ -23,7 +24,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand active" href="./index.html">Polar Hunt</a>
+        <a class="navbar-brand" href="./index.html">Polar Hunt</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,8 +39,8 @@
             <li class="nav-item">
               <a class="nav-link" href="./gallery.html">Gallery</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./map.html">Map</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Map</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./login.html">Login</a>
@@ -50,13 +51,31 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="home-text">
-      Polar Hunt
-    </div>
+    <div style="padding-top: 100px;">
+        <div class="row">
+          <div class="col-med-10 mx-auto">
+            <div class="map-text">Location Data</div>
+
+            <div id="map"></div>
+            <div id="floating-panel">
+              <button onclick="toggleHeatmap()">Toggle HeatMap</button>
+              <button onclick="changeGradient()">Change Gradient</button>
+              <button onclick="changeRadius()">Change Radius</button>
+              <button onclick="changeOpacity()">Change Opacity</button>
+            </div>
+            
+            <!-- Replace the value of the key parameter with your own API key. -->
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj-gaooYsZqP5R4-kRpvkv-yvCTHptHjo&libraries=visualization&callback=initMap">
+            </script>
+          </div>
+        </div>
+      </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/map.js"></script>
 
   </body>
 

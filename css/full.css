@@ -1,13 +1,41 @@
-/*!
- * Start Bootstrap - Full (https://startbootstrap.com/template-overviews/full)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-full/blob/master/LICENSE)
- */
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
-  background: url('http://placehold.it/1920x1080') no-repeat center center fixed;
+  background: url('https://cdn.vox-cdn.com/thumbor/0Wg8nw-3UCsAsVCRoqjPkku4vQM=/0x0:6115x4081/1200x800/filters:focal(2569x1552:3547x2530)/cdn.vox-cdn.com/uploads/chorus_image/image/57059063/shutterstock_560011798.0.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+}
+.home-text {
+	font-size: 90px;
+	font-family: "Roboto", sans serif;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 90px;
+	padding-top: 200px;
+	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+.about-text {
+	font-size: 40px;
+	font-family: "Roboto", sans serif;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 200px;
+	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+.map-text {
+	font-size: 40px;
+	font-family: "Roboto", sans serif;
+	text-align: center;
+	vertical-align: middle;
+	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+.capture-text {
+	font-size: 20px;
+	font-family: "Roboto", sans serif;
+	text-align: center;
+	vertical-align: middle;
+	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+	padding-top: 100px;
 }
