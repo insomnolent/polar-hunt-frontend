@@ -8,6 +8,7 @@ body {
   -o-background-size: cover;
 }
 .home-text {
+  color: #347bad;
 	font-size: 90px;
 	font-family: "Roboto", sans serif;
 	text-align: center;
@@ -17,6 +18,7 @@ body {
 	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 .about-text {
+  color: #347bad;
 	font-size: 40px;
 	font-family: "Roboto", sans serif;
 	text-align: center;
@@ -25,6 +27,7 @@ body {
 	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 .map-text {
+  color: #347bad;
 	font-size: 40px;
 	font-family: "Roboto", sans serif;
 	text-align: center;
@@ -32,10 +35,29 @@ body {
 	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 .capture-text {
+  color: #347bad;
 	font-size: 20px;
 	font-family: "Roboto", sans serif;
 	text-align: center;
 	vertical-align: middle;
 	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 	padding-top: 100px;
+}
+
+.navbar-custom {
+    background-color: #1e4b87;
+}
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255,232,0,.8);
+}
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,232,0,.5);
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
 }
