@@ -1,5 +1,6 @@
 #map {
-  height: 400px;
+  height: 50vh;
+  width: 50vw;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
