@@ -5,41 +5,73 @@ var userId;
 
 	var authURL="https://auth.conventionalize82.hasura-app.io/v1/"
 	var dataURL="https://data.conventionalize82.hasura-app.io/v1/"
+
+
+
+
+$.ajax({
+	url: "https://auth.conventionalize82.hasura-app.io/v1/signup",
+	contentType: "application/json",
+	data: JSON.stringify({
+      "provider": "username",
+      "data": {
+            "username": "johnsmiths",
+            "password": "js@hasura"
+      }
+	}),
+	type: "POST",
+	dataType: "json"
+}).done(function(json) {
+	// Handle Response
+	// To save the auth token received to offline storage
+	// var authToken = result.auth_token
+	// window.localStorage.setItem('HASURA_AUTH_TOKEN', authToken);
+}).fail(function(xhr, status, errorThrown) {
+	console.log("Error: " + errorThrown);
+	console.log("Status: " + status);
+	console.dir(xhr);
+});
+
+
+
+
+
 	//on register click
 	$(create).click(function(){
 	//some ajax shit
 	$.ajax({
-		url: authURL='signup',
+		url: authURL+'signup',
 		method:'post',
 		headers:{'Content-Type' : 'application/json'},
-		data: JSON.stringify({
-		"provider" : "username",
+		payload: JSON.stringify({
+		"provider" : "user",
 		"data": {
-		"username" :$('#uname').val(), 
-		"password" :$('#pwd').val()
+		"username" : $("#uname").val(), 
+		"password" : $("#pwd").val()
 		}
 	})
 
 	}).done(function(){
 		//usr logged in here
 		alert('user logged in');
-	}).fail(function(data) {
-		console.error(data);
-		alert("fail :" +JSON.parse(data.responseText).message);
+	}).fail(function(payload) {
+		console.log(payload)
+		console.error(payload);
+		alert("fail :" +JSON.parse(payload.responseText).message);
 	});
 //on click login 
 $(login).click(function(){
 //post request to login end pt
 
-#.ajax({
+$.ajax({
 	url: authUrl + 'login',
 	method: 'post',
 	headers: {'Content-Type': 'application/json'},
 	data: JSON.stringify({
 		"provider" : "username",
 		"data": {
-		"username" :$('#loginname').val(), 
-		"password" :$('#loginpassword').val()
+		"username" :$("#loginname").val(), 
+		"password" :$("#loginpassword").val()
 		}
 	})
 }).done(function(data){
