@@ -25,7 +25,7 @@ var userId;
 		alert('user logged in');
 	}).fail(function(data)){
 		console.error(data);
-		alert("fail :" +JSON.parse(data.responseText).message )
+		alert("fail :" +JSON.parse(data.responseText).message);
 	});
 //on click login 
 $(login).click(function(){
