@@ -8,36 +8,41 @@ var userId;
 
 
 
-
+$(create).click(function(){
 $.ajax({
 	url: "https://auth.conventionalize82.hasura-app.io/v1/signup",
 	contentType: "application/json",
 	data: JSON.stringify({
       "provider": "username",
       "data": {
-            "username": "johnsmiths",
-            "password": "js@hasura"
+        "username": $("#uname").val(), 
+		"password": $("#pwd").val()
       }
 	}),
 	type: "POST",
 	dataType: "json"
 }).done(function(json) {
+	alert('user logged in');
 	// Handle Response
 	// To save the auth token received to offline storage
 	// var authToken = result.auth_token
 	// window.localStorage.setItem('HASURA_AUTH_TOKEN', authToken);
 }).fail(function(xhr, status, errorThrown) {
+
 	console.log("Error: " + errorThrown);
 	console.log("Status: " + status);
 	console.dir(xhr);
-});
+	alert("fail :" +JSON.parse(json.responseText).message);
 
+});
+}); 
 
 
 
 
 	//on register click
-	$(create).click(function(){
+/*	$(create).click(function()
+	{
 	//some ajax shit
 	$.ajax({
 		url: authURL+'signup',
@@ -59,6 +64,7 @@ $.ajax({
 		console.error(payload);
 		alert("fail :" +JSON.parse(payload.responseText).message);
 	});
+*/
 //on click login 
 $(login).click(function(){
 //post request to login end pt
@@ -94,4 +100,4 @@ $.ajax({
 
 })
 
-}); 
+//}); 
