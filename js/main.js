@@ -23,7 +23,7 @@ var userId;
 	}).done(function(){
 		//usr logged in here
 		alert('user logged in');
-	}).fail(function(data)){
+	}).fail(function(data) {
 		console.error(data);
 		alert("fail :" +JSON.parse(data.responseText).message);
 	});
