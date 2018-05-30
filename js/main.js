@@ -3,10 +3,10 @@ $(document).ready(function(){
 var token;
 var userId;
 
-	var authURL="https://auth.conventionalize82.hasura-app.io/"
-	var dataURL="https://data.conventionalize82.hasura-app.io/"
+	var authURL="https://auth.conventionalize82.hasura-app.io/v1/"
+	var dataURL="https://data.conventionalize82.hasura-app.io/v1/"
 	//on register click
-	$(Register).click(function(){
+	$(create).click(function(){
 	//some ajax shit
 	$.ajax({
 		url: authURL='signup',
