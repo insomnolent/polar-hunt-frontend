@@ -56,4 +56,16 @@ body {
     color: #ffffff;
 }
 
+.logo {
+  height: 55vh;
+}
+
+.navbar-toggler {
+  background-color: #0f3f77;
+}
+
+.navbar-toggler-icon {
+background-image:url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 232, 0,0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")
+}
+
 /* https://cdn.vox-cdn.com/thumbor/0Wg8nw-3UCsAsVCRoqjPkku4vQM=/0x0:6115x4081/1200x800/filters:focal(2569x1552:3547x2530)/cdn.vox-cdn.com/uploads/chorus_image/image/57059063/shutterstock_560011798.0.jpg */
