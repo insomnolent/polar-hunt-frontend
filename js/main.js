@@ -86,6 +86,7 @@ $.ajax({
 	userId=data.hasura_id;
 	userRoles=data.hasura_roles;
 	//redirect to app
+	alert('user logged in');
 	window.location='/app';
 
 
