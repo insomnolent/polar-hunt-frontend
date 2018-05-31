@@ -88,7 +88,8 @@ $.ajax({
 	userRoles=data.hasura_roles;
 	//redirect to app
 	alert('User logged in');
-	window.location='https://insomnolent.github.io/polar-hunt-frontend/capture.html';
+	window.location='capture.html';
+
 
 	//some expire time shit and cookies
 	//var d= new Date();
