@@ -1,6 +1,18 @@
 var upload_btn = document.getElementById('file_submit');
 var file_input = document.getElementById('file_input');
 
+var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "GET", aUrl, true );            
+        anHttpRequest.send( null );
+    }
+}
 
 upload_btn.onclick = function () {
     if (! (file_input || file_input.files || file_input.files[0])) {
@@ -21,14 +33,37 @@ upload_btn.onclick = function () {
     };
     upload_btn.innerHTML = 'Uploading...';
     var fileId;
+			
     fetch(url, requestOptions)
         .then(function(response) {
            upload_btn.innerHTML = 'Uploaded!';
            //window.location.reload();
+/*
+           //using sms global
+           var client = new HttpClient();
+			client.get('https://api.smsglobal.com/http-api.php?action=sendsms&user=m9dkkcsc&password=TixAHt7N&&from=Hello&to=16692516002&text=Hello%20world', function(response) {
+    		// do something/nothing with response
+			});
+*/
+			//using swift sms gateway
+// 'https://secure.smsgateway.ca/SendSMS.aspx?CellNumber=16692516002&AccountKey=q38Y1fUBqc80IhY00p34n02Xn48Ldzm2&MessageBody="Your photo has been uploaded successfully!"'
+			var baseURL = 'https://secure.smsgateway.ca/SendSMS.aspx?'
+			var accountKey = 'q38Y1fUBqc80IhY00p34n02Xn48Ldzm2'
+			var destinationNumber = '16692516002'
+			var message = '"Your photo has been uploaded successfully!"'
+			var targetURL = baseURL + 'CellNumber=' + destinationNumber + '&AccountKey=' 
+						+ accountKey + '&MessageBody=' + message
+           var client = new HttpClient();
+			client.get(targetURL, function(response) {
+    			// do something/nothing with response
+			});
+
+/*
             //testing twilio...
             $.ajax({
                    url:"twilio.py"
             });
+*/
            return response.json();
        })
        .then(function(data) {
