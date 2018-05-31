@@ -15,7 +15,7 @@ $.ajax({
 	data: JSON.stringify({
       "provider": "username",
       "data": {
-        "username": $("#uname").val(), 
+        "username": $("#uname").val(),
 		"password": $("#pwd").val()
       }
 	}),
@@ -35,7 +35,7 @@ $.ajax({
 	alert("fail :" +JSON.parse(json.responseText).message);
 
 });
-}); 
+});
 
 
 
@@ -51,7 +51,7 @@ $.ajax({
 		payload: JSON.stringify({
 		"provider" : "user",
 		"data": {
-		"username" : $("#uname").val(), 
+		"username" : $("#uname").val(),
 		"password" : $("#pwd").val()
 		}
 	})
@@ -65,7 +65,7 @@ $.ajax({
 		alert("fail :" +JSON.parse(payload.responseText).message);
 	});
 */
-//on click login 
+//on click login
 $(login).click(function(){
 //post request to login end pt
 
@@ -75,7 +75,7 @@ $.ajax({
 	data: JSON.stringify({
       "provider": "username",
       "data": {
-        "username": $("#loginname").val(), 
+        "username": $("#loginname").val(),
 		"password": $("#loginpassword").val()
       }
 	}),
@@ -86,10 +86,9 @@ $.ajax({
 	userId=data.hasura_id;
 	userRoles=data.hasura_roles;
 	//redirect to app
-	alert('user logged in');
+	document.getElementById("login-success").style.display = "initial";
+	//alert('user logged in');
 	window.location='https://insomnolent.github.io/polar-hunt-frontend/capture.html';
-
-
 
 	//some expire time shit and cookies
 	//var d= new Date();
@@ -110,4 +109,4 @@ $.ajax({
 
 })
 
-//}); 
+//});
