@@ -14,6 +14,11 @@ $.ajax({
 	dataType: "json"
 }).done(function(json) {
 	// Handle Response
+	alert('check your phone number!')
+	
+	phoneNumber=json.username
+	window.localStorage.setItem('PHONENUMBER', phoneNumber);
+
 }).fail(function(xhr, status, errorThrown) {
 	console.log("Error: " + errorThrown);
 	console.log("Status: " + status);
@@ -36,6 +41,8 @@ $.ajax({
 	type: "POST",
 	dataType: "json"
 }).done(function(json) {
+	alert('logged out successfully!')
+	window.localStorage.setItem('isLoggedIn',false);
 	// Handle Response
 }).fail(function(xhr, status, errorThrown) {
 	console.log("Error: " + errorThrown);
