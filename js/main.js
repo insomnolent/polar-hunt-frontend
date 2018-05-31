@@ -22,11 +22,11 @@ $.ajax({
 	type: "POST",
 	dataType: "json"
 }).done(function(json) {
-	alert('user logged in');
+	alert('user crated');
 	// Handle Response
 	// To save the auth token received to offline storage
-	// var authToken = result.auth_token
-	// window.localStorage.setItem('HASURA_AUTH_TOKEN', authToken);
+	 var authToken = result.auth_token
+	 window.localStorage.setItem('HASURA_AUTH_TOKEN', authToken);
 }).fail(function(xhr, status, errorThrown) {
 
 	console.log("Error: " + errorThrown);
@@ -87,7 +87,7 @@ $.ajax({
 	userRoles=data.hasura_roles;
 	//redirect to app
 	alert('user logged in');
-	window.location='/app';
+	window.location='https://insomnolent.github.io/polar-hunt-frontend/capture.html';
 
 
 
@@ -97,7 +97,15 @@ $.ajax({
 	var expires= "expires" + d.toUTCString();
 	document.cookie="cookie_name"+ "=" +token +" ;"+ expires + ";path=/";
 
-})
+}).fail(function(xhr, status, errorThrown) {
+
+	console.log("Error: " + errorThrown);
+	console.log("Status: " + status);
+	console.dir(xhr);
+	alert("fail :" +JSON.parse(data.responseText).message);
+
+});
+
 });
 
 })
