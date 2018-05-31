@@ -70,16 +70,17 @@ $(login).click(function(){
 //post request to login end pt
 
 $.ajax({
-	url: authUrl + 'login',
-	method: 'post',
-	headers: {'Content-Type': 'application/json'},
+	url: "https://auth.conventionalize82.hasura-app.io/v1/login",
+	contentType: "application/json",
 	data: JSON.stringify({
-		"provider" : "username",
-		"data": {
-		"username" :$("#loginname").val(), 
-		"password" :$("#loginpassword").val()
-		}
-	})
+      "provider": "username",
+      "data": {
+        "username": $("#loginname").val(), 
+		"password": $("#loginpassword").val()
+      }
+	}),
+	type: "POST",
+	dataType: "json"
 }).done(function(data){
 	token=data.auth_token;
 	userId=data.hasura_id;
