@@ -92,10 +92,10 @@ $.ajax({
 
 
 	//some expire time shit and cookies
-	var d= new Date();
-	d.setTime(d.getTime() + (1*24*60*60*1000));
-	var expires= "expires" + d.toUTCString();
-	document.cookie="cookie_name"+ "=" +token +" ;"+ expires + ";path=/";
+	//var d= new Date();
+	//d.setTime(d.getTime() + (1*24*60*60*1000));
+	//var expires= "expires" + d.toUTCString();
+	//document.cookie="cookie_name"+ "=" +token +" ;"+ expires + ";path=/";
 
 }).fail(function(xhr, status, errorThrown) {
 
