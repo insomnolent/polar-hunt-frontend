@@ -25,6 +25,10 @@ upload_btn.onclick = function () {
         .then(function(response) {
            upload_btn.innerHTML = 'Uploaded!';
            //window.location.reload();
+            //testing twilio...
+            $.ajax({
+                   url:"twilio.py"
+            });
            return response.json();
        })
        .then(function(data) {
