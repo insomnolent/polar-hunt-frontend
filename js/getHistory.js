@@ -20,10 +20,10 @@ function showDivs(n) {
     // var authToken = window.localStorage.getItem('HASURA_AUTH_TOKEN');
     // headers = { "Authorization" : "Bearer " + authToken }
     $.ajax({
-        url: "https://data.blurriness60.hasura-app.io/v1/query",
+        url: "https://data.conventionalize82.hasura-app.io/v1/query",
         contentType: "application/json",
         headers: {
-          "Authorization": "Bearer f533a6e4ab6d6787f9375a540cae4b85084297f455e82f77"
+          "Authorization": "Bearer 26f356ffccdf9f7bf02d3e1dce92bf28b0e12b37437be2cd"
         },
         data: JSON.stringify({
           "type": "select",
@@ -41,13 +41,13 @@ function showDivs(n) {
         dataType: "json"
     }).done(function(json) {
         // console.log("JSON IS", json);
+        var url = "https://filestore.conventionalize82.hasura-app.io/v1/file/";
         // Handle Response
         if (json.length == 0) {
             $("#no-hist").attr('style','visibility: visible');
             $("#picture1").attr('style','visibility: hidden');
             // $("#description1").attr('style','visibility: hidden');
         } else {
-            var url = "https://filestore.blurriness60.hasura-app.io/v1/file/";
             url += json[json.length-4].file_id;
             document.querySelector("#picture1").src=url;
         }
@@ -57,7 +57,6 @@ function showDivs(n) {
                     // $("#description2").attr('style','visibility: hidden');
 
         } else {
-            var url = "https://filestore.blurriness60.hasura-app.io/v1/file/";
             url += json[json.length-3].file_id;
             document.querySelector("#picture2").src=url;
         }
@@ -66,7 +65,6 @@ function showDivs(n) {
                     // $("#description3").attr('style','visibility: hidden');
 
         } else {
-            var url = "https://filestore.blurriness60.hasura-app.io/v1/file/";
             url += json[json.length-2].file_id;
             document.querySelector("#picture3").src=url;
         }
@@ -75,7 +73,6 @@ function showDivs(n) {
                     // $("#description4").attr('style','visibility: hidden');
 
         } else {
-            var url = "https://filestore.blurriness60.hasura-app.io/v1/file/";
             url += json[json.length-1].file_id;
             document.querySelector("#picture4").src=url;
         }
@@ -96,10 +93,10 @@ function noWords(words) {
 
 // headers = { "Authorization" : "Bearer " + authToken }
 $.ajax({
-    url: "https://data.blurriness60.hasura-app.io/v1/query",
+    url: "https://data.conventionalize82.hasura-app.io/v1/query",
     contentType: "application/json",
     headers: {
-      "Authorization": "Bearer f533a6e4ab6d6787f9375a540cae4b85084297f455e82f77"
+      "Authorization": "Bearer 26f356ffccdf9f7bf02d3e1dce92bf28b0e12b37437be2cd"
     },
     data: JSON.stringify({
       "type": "select",
@@ -107,7 +104,6 @@ $.ajax({
             "table": "Photos",
             "columns": [
                   "info",
-                  "words"
             ]
       }
     }),
@@ -159,43 +155,8 @@ $.ajax({
     console.dir(xhr);
 });
 
+var resetList = document.getElementById('resetList');
 
-function areThereWords(words) {
-    if (words != "No words") {
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance("With the words."));
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance(words));
-    }
+resetList.onclick = function() {
+
 }
-
-var readTextAloud = document.getElementById('readTextAloud');
-
-readTextAloud.onclick = function () {
-    var text1 = $('#description1').text();
-    var text2 = $('#description2').text();
-    var text3 = $('#description3').text();
-    var text4 = $('#description4').text();
-
-    var words1 = $('#words1').text();
-    var words2 = $('#words2').text();
-    var words3 = $('#words3').text();
-    var words4 = $('#words4').text();
-
-    // if (text4.length > 0) {
-    //     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Here is a summary of your most recent photos."));
-    //     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Your most recent photo includes."));
-    //     window.speechSynthesis.speak(new SpeechSynthesisUtterance(text4));
-    //     areThereWords(words4);
-    //     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Your second most recent photo includes."));
-    //     window.speechSynthesis.speak(new SpeechSynthesisUtterance(text3));
-    //     areThereWords(words3);
-    //     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Your third most recent photo includes."));
-    //     window.speechSynthesis.speak(new SpeechSynthesisUtterance(text2));
-    //     areThereWords(words2);
-    //     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Your fourth most recent photo includes."));
-    //     window.speechSynthesis.speak(new SpeechSynthesisUtterance(text1));
-    //     areThereWords(words1);
-    // } else {
-    //     var msg = new SpeechSynthesisUtterance("There is no description for this image.");
-    //     window.speechSynthesis.speak(msg);
-    // }
-};

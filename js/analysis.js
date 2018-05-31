@@ -79,8 +79,43 @@ function getDescription(url) {
     .done(function(data) {
         console.log('see description');
         console.log(JSON.stringify(data, null, 2));
+        $("#responseTextArea").val(JSON.stringify(data, null, 2));
+
         var label = data.description.captions[0].text;
         // Show formatted JSON on webpage.
+
+        console.log('does it reach here and post to database');
+
+        // post url and description to the database
+        $.ajax({
+            url: "https://data.conventionalize82.hasura-app.io/v1/query/",
+
+            // Request headers.
+            beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Authorization", "Bearer 26f356ffccdf9f7bf02d3e1dce92bf28b0e12b37437be2cd");
+            },
+
+            type: "POST",
+
+            data: JSON.stringify({
+                "type":"insert",
+                "args":{
+                    "table":"Photos",
+                    "objects":[
+                        {"URL": url, "info": label}
+                    ]
+                }
+            })
+
+        }).done(function(response) {
+            console.log(response)
+
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+
+            console.log(jqXHR, textStatus, errorThrown)
+        });
+
 
         $("#descriptionTextArea").text(label);
         $('#desc-card').addClass('animated slideInRight');
@@ -157,20 +192,6 @@ function getImageText(url) {
         //$("#text-card").fadeIn(200);
         $('#text-card').addClass('animated slideInRight');
         $('#text-card').attr('style','visibility: visible');
-
-
-        // remove text-to-speech for now
-        //
-        // if (text.length > 0) {
-        //     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Here are the words in this image."));
-        //     var msg = new SpeechSynthesisUtterance(text);
-        //     window.speechSynthesis.speak(msg);
-        //     console.log("words in image are", text);
-        //     processImageUploadText(url, text);
-        // } else {
-        //     var msg = new SpeechSynthesisUtterance("There are no words in this image.");
-        //     window.speechSynthesis.speak(msg);
-        // }
     })
 
     .fail(function(jqXHR, textStatus, errorThrown) {
@@ -184,5 +205,5 @@ function getImageText(url) {
 
 function processImage(url) {
     getDescription(url);
-    getImageText(url);
+    // getImageText(url);
 }

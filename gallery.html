@@ -53,7 +53,7 @@
     <div class="container" style="padding-top: 100px;">
         <div class="row">
           <div class="col-med-6 mx-auto">
-            <p style="font-size: 30px" class="text-faded mb-5">History of Photos</p>
+            <div class="gallery-text">Photo Gallery and Checklist</div>
 
             <div class="row">
               <div class="w3-content w3-display-container">
@@ -91,12 +91,24 @@
                 </div>
               </div>
 
+
+              <div class="w3-display-container mySlides">
+                <img id="picture1" src="" style="width: auto; height:400px"/>
+                <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black">
+                  Your Fourth Most Recent Picture
+                </div>
+                <div id="description1" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
+                </div>
+                <div id="words1" class="w3-display-topright w3-small w3-container w3-padding-16 w3-black">
+                </div>
+              </div>
+
               <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
               <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
               </div>
             </div>
             <br>
-            <button id="readTextAloud" class="btn btn-primary">Reset</button>
+            <button id="resetList" class="btn btn-primary">Reset</button>
 
             <p style="font-size: 20px; visibility: hidden" id="no-hist" class="text-faded mb-5" >There are no photos in your history</p>
           </div>
@@ -106,7 +118,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/postToDatabase.js"></script>
+    <script src="js/analysis.js"></script>
     <script src="js/getHistory.js"></script>
 
   </body>

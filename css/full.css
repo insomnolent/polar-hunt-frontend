@@ -31,6 +31,13 @@ body {
 	vertical-align: middle;
 	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
+.gallery-text {
+	font-size: 40px;
+	font-family: "Roboto", sans serif;
+	text-align: center;
+	vertical-align: middle;
+	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
 .capture-text {
 	font-size: 20px;
 	font-family: "Roboto", sans serif;

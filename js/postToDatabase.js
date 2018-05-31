@@ -1,4 +1,5 @@
-function processImageUploadText(sourceImageUrl, wordsInImage) {
+function processImageUploadText(sourceImageUrl, description) {
+    console.log('process Image Upload Text');
     var subscriptionKey = "a047f43a043e47b4895258bbed161b5f";
 
     var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze";
@@ -14,7 +15,7 @@ function processImageUploadText(sourceImageUrl, wordsInImage) {
     //var sourceImageUrl = document.getElementById("inputImage").value;
     //document.querySelector("#sourceImage").src = sourceImageUrl;
 
-    // Perform the REST API call.
+    // Post info to database
     $.ajax({
         url: uriBase + "?" + $.param(params),
 
@@ -39,7 +40,7 @@ function processImageUploadText(sourceImageUrl, wordsInImage) {
             // Request headers.
             beforeSend: function(xhrObj){
                 xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Authorization", "Bearer f533a6e4ab6d6787f9375a540cae4b85084297f455e82f77");
+                xhrObj.setRequestHeader("Authorization", "Bearer 26f356ffccdf9f7bf02d3e1dce92bf28b0e12b37437be2cd");
             },
 
             type: "POST",
@@ -49,7 +50,7 @@ function processImageUploadText(sourceImageUrl, wordsInImage) {
                 "args":{
                     "table":"Photos",
                     "objects":[
-                        {"URL": sourceImageUrl, "info": response.description.captions[0].text, "words": wordsInImage}
+                        {"URL": sourceImageUrl, "info": response.description.captions[0].text}
                     ]
                 }
             })
