@@ -51,67 +51,76 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container" style="padding-top: 100px;">
-        <div class="row">
-          <div class="col-med-6 mx-auto">
-            <div class="gallery-text">Photo Gallery and Checklist</div>
-
+    <div class="container" style="padding-top: 100px">
+      <div class="row">
+        <div class="col-med-6 mx-auto">
             <div class="row">
-              <div class="w3-content w3-display-container">
+              <div class="col-med-6 mx-auto">
+                <div class="gallery-text">Photo Gallery</div>
 
-              <div class="w3-display-container mySlides">
-                <img id="picture4" src="" style="width: auto; height:400px"/>
-                <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black">
-                  Your Most Recent Picture
-                </div>
-                <div id="description4" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
-                </div>
-                <div id="words4" class="w3-display-topright w3-small w3-container w3-padding-16 w3-black">
-                </div>
-              </div>
+                <div class="row">
+                  <div class="w3-content w3-display-container">
 
-              <div class="w3-display-container mySlides">
-                <img id="picture3" src="" style="width: auto; height:400px"/>
-                <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black">
-                  Your Second Most Recent Picture
-                </div>
-                <div id="description3" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
-                </div>
-                <div id="words3" class="w3-display-topright w3-small w3-container w3-padding-16 w3-black">
-                </div>
-              </div>
+                  <div class="w3-display-container mySlides">
+                    <img id="picture4" src="" style="width: auto; height:400px"/>
+                    <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black">
+                      Your Most Recent Picture
+                    </div>
+                    <div id="description4" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
+                    </div>
+                    <div id="words4" class="w3-display-topright w3-small w3-container w3-padding-16 w3-black">
+                    </div>
+                  </div>
 
-              <div class="w3-display-container mySlides">
-                <img id="picture2" src="" style="width: auto; height:400px"/>
-                <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black">
-                  Your Third Most Recent Picture
-                </div>
-                <div id="description2" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
-                </div>
-                <div id="words2" class="w3-display-topright w3-small w3-container w3-padding-16 w3-black">
-                </div>
-              </div>
+                  <div class="w3-display-container mySlides">
+                    <img id="picture3" src="" style="width: auto; height:400px"/>
+                    <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black">
+                      Your Second Most Recent Picture
+                    </div>
+                    <div id="description3" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
+                    </div>
+                    <div id="words3" class="w3-display-topright w3-small w3-container w3-padding-16 w3-black">
+                    </div>
+                  </div>
+
+                  <div class="w3-display-container mySlides">
+                    <img id="picture2" src="" style="width: auto; height:400px"/>
+                    <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black">
+                      Your Third Most Recent Picture
+                    </div>
+                    <div id="description2" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
+                    </div>
+                    <div id="words2" class="w3-display-topright w3-small w3-container w3-padding-16 w3-black">
+                    </div>
+                  </div>
 
 
-              <div class="w3-display-container mySlides">
-                <img id="picture1" src="" style="width: auto; height:400px"/>
-                <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black">
-                  Your Fourth Most Recent Picture
-                </div>
-                <div id="description1" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
-                </div>
-                <div id="words1" class="w3-display-topright w3-small w3-container w3-padding-16 w3-black">
-                </div>
-              </div>
+                  <div class="w3-display-container mySlides">
+                    <img id="picture1" src="" style="width: auto; height:400px"/>
+                    <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black">
+                      Your Fourth Most Recent Picture
+                    </div>
+                    <div id="description1" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black">
+                    </div>
+                    <div id="words1" class="w3-display-topright w3-small w3-container w3-padding-16 w3-black">
+                    </div>
+                  </div>
 
-              <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
-              <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+                  <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+                  <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+                  </div>
+                </div>
+                <br>
+                <button id="resetList" class="btn btn-primary">Reset</button>
+
+                <p style="font-size: 20px; visibility: hidden" id="no-hist" class="text-faded mb-5" >There are no photos in your history</p>
               </div>
             </div>
-            <br>
-            <button id="resetList" class="btn btn-primary">Reset</button>
+          </div>
 
-            <p style="font-size: 20px; visibility: hidden" id="no-hist" class="text-faded mb-5" >There are no photos in your history</p>
+          <div class="col-med-6 mx-auto">
+              <div class="gallery-text">Checklist</div>
+
           </div>
         </div>
       </div>
