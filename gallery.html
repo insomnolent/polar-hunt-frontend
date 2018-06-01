@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/full.css" rel="stylesheet">
+    <link href="css/checklist.css" rel="stylesheet">
 
   </head>
 
@@ -51,10 +52,63 @@
     </nav>
 
     <!-- Page Content -->
+    <div class="container" style="padding-top: 100px">
+      <div class="row">
+        <div class="col-med-8 mx-auto">
+            <div class="gallery-text">Photo Gallery</div>
+
+              <div class="w3-content w3-display-container">
+                <div class="w3-display-container mySlides">
+                  <div class="w3-display-bottom w3-med w3-container w3-padding-16 w3-black gallery-recent-image">
+                    Your Most Recent Picture
+                  </div>
+                  <img id="picture1" src="" style="width: 400px; height: auto" />
+                  <div id="description1" class="w3-display-topleft w3-small w3-container w3-padding-16 w3-black gallery-recent-image">
+                  </div>
+                </div>
+            </div>
+            <br>
+
+            <p style="font-size: 20px; visibility: hidden" id="no-hist" class="text-faded mb-5" >There are no photos in your history</p>
+      </div>
+
+      <div class="col-med-4 mx-auto">
+          <div class="gallery-text">Checklist</div>
+          <!-- <div id="myDIV" class="header">
+            <input type="text" id="myInput" placeholder="Title...">
+            <span onclick="newElement()" class="addBtn">Add</span>
+          </div> -->
+
+          <div class="checklist">
+
+            <ul id="myUL">
+              <!-- <li class="item" id="bear">Bear</li>
+              <li class="item" id="banana">Banana</li>
+              <li class="item" id="fountain">Fountain</li>
+              <li class="item" id="computers">Computers</li>
+              <li class="item" id="flowers">Flowers</li>
+              <li class="item" id="ice_cream">Ice Cream</li>
+              <li class="item" id="piano">Piano</li>
+              <li class="item" id="stadium">Stadium</li>
+              <li class="item" id="pizza">Pizza</li>
+              <li class="item" id="tree">Tree</li>
+              <li class="item" id="books">Books</li> -->
+            </ul>
+          </div>
+
+          <button id="reset" class="btn btn-primary">Reset</button>
+          <button id="checkStorage" class="btn btn-primary">Check LocalStorage</button>
+
+
+    </div>
+  </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/checklist.js"></script>
+    <script src="js/analysis.js"></script>
+    <script src="js/getHistory.js"></script>
 
   </body>
 

@@ -37,6 +37,7 @@ upload_btn.onclick = function () {
     fetch(url, requestOptions)
         .then(function(response) {
            upload_btn.innerHTML = 'Uploaded!';
+
            //window.location.reload();
 /*
            //using sms global
@@ -47,6 +48,7 @@ upload_btn.onclick = function () {
 */
 			//using swift sms gateway
 // 'https://secure.smsgateway.ca/SendSMS.aspx?CellNumber=16692516002&AccountKey=q38Y1fUBqc80IhY00p34n02Xn48Ldzm2&MessageBody="Your photo has been uploaded successfully!"'
+/*
 			var baseURL = 'https://secure.smsgateway.ca/SendSMS.aspx?'
 			var accountKey = 'q38Y1fUBqc80IhY00p34n02Xn48Ldzm2'
 			var destinationNumber = '16692516002'
@@ -57,7 +59,7 @@ upload_btn.onclick = function () {
 			client.get(targetURL, function(response) {
     			// do something/nothing with response
 			});
-
+*/
 /*
             //testing twilio...
             $.ajax({
@@ -69,7 +71,7 @@ upload_btn.onclick = function () {
        .then(function(data) {
           fileId = data.file_id;
           url = url + fileId;
-          processImage(url);
+           getDescription(url);
 
        })
        .catch(function(error) {
@@ -78,10 +80,98 @@ upload_btn.onclick = function () {
 
 };
 
-// Computer Vision API
+// these are terribly organized because files should be split apart but oh well
+// the following 3 functions are all related to only the checklist
 
+/////////////////////////
+// Checklist Functions //
+/////////////////////////
+
+// check if word is on checklist and if it is mark as checked
+function checkOffItem(wordFound) {
+    var item = "";
+    var item_found;
+    switch (wordFound) {
+        case "bear":
+            item = "bear";
+            break;
+        case "banana":
+            item = "banana";
+            break;
+        case "bananas":
+            item = "banana";
+            break;
+        case "fountain":
+            item = "fountain";
+            break;
+        case "computer":
+            item = "computers";
+            break;
+        case "computers":
+            item = "computers";
+            break;
+        case "flower":
+            item = "flowers";
+            break;
+        case "flowers":
+            item = "flowers";
+            break;
+        case "piano":
+            item = "piano";
+            break;
+        case "ice_cream":
+            item = "ice_cream";
+            break;
+        case "stadium":
+            item = "stadium";
+            break;
+        case "pizza":
+            item = "pizza";
+            break;
+        case "tree":
+            item = "tree";
+            break;
+        case "trees":
+            item = "tree";
+            break;
+        case "books":
+            item = "books";
+            break;
+        case "books":
+            item = "books";
+            break;
+    };
+    var item_found = document.getElementById(`${item}`);
+    var item_id= "#" + `${item}`;
+    console.log('does it reach here', item_id);
+    $(`${item_id}`).attr('class', 'item checked');
+    localStorage.setItem(`${item}`, true);
+};
+
+
+// check if text description contains an item word
+function parseOutput(text) {
+    text = text.toLowerCase();
+    var wordsInText = text.split(" ");
+    var itemWords = ["bear", "banana", "bananas", "fountain", "computer", "computers", "flower", "flowers", "piano", "ice_cream", "stadium", "pizza", "tree", "trees", "book", "books"];
+
+    itemWords.forEach(function(element) {
+        if (wordsInText.indexOf(element) > -1) {
+            console.log("yay it reaches the checkOffItem function");
+            checkOffItem(element);
+        }
+    });
+    
+};
+
+
+/////////////////////////
+// Computer Vision API //
+/////////////////////////
+
+// gets description of picture
 function getDescription(url) {
-    var subscriptionKey = "a047f43a043e47b4895258bbed161b5f";
+    var subscriptionKey = "b15fb91cceb144bba6c26757acd14956";
 
     var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
 
@@ -118,24 +208,52 @@ function getDescription(url) {
     .done(function(data) {
         console.log('see description');
         console.log(JSON.stringify(data, null, 2));
-        var label = data.description.captions[0].text;
+
         // Show formatted JSON on webpage.
+        $("#responseTextArea").val(JSON.stringify(data, null, 2));
+
+        var label = data.description.captions[0].text;
+        console.log('description', label);
+
+        // send to function in checklist.js to see if photo matches any words
+        parseOutput(label);
+
+        // post url and description to the database
+        $.ajax({
+            url: "https://data.conventionalize82.hasura-app.io/v1/query/",
+
+            // Request headers.
+            beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Authorization", "Bearer 26f356ffccdf9f7bf02d3e1dce92bf28b0e12b37437be2cd");
+            },
+
+            type: "POST",
+
+            data: JSON.stringify({
+                "type":"insert",
+                "args":{
+                    "table":"Photos",
+                    "objects":[
+                        {"URL": url, "info": label}
+                    ]
+                }
+            })
+
+        }).done(function(response) {
+            console.log(response)
+
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+
+            console.log(jqXHR, textStatus, errorThrown)
+        });
+
 
         $("#descriptionTextArea").text(label);
         $('#desc-card').addClass('animated slideInRight');
         $('#desc-card').attr('style','visibility: visible');
-        // $("#description1").val(label);
-        // $("#description2").val(label);
-        // $("#description3").val(label);
-        // $("#description4").val(label);
 
         //var dataS = JSON.stringify(data);
-
-        // remove text-to-speech for now
-        // 
-        // var msg = new SpeechSynthesisUtterance(label);
-        // window.speechSynthesis.speak(new SpeechSynthesisUtterance("Image Description"));
-        // window.speechSynthesis.speak(msg);
     })
 
     .fail(function(jqXHR, textStatus, errorThrown) {
@@ -146,8 +264,11 @@ function getDescription(url) {
     });
 };
 
+// get words from picture but for now not necessary
+// so I guess everything below here isn't necessary lmao 
+
 function getImageText(url) {
-    var subscriptionKey = "6c800afb97194ac8ab0147ec640967ac";
+    var subscriptionKey = "b15fb91cceb144bba6c26757acd14956";
 
     var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/ocr";
 
@@ -196,20 +317,6 @@ function getImageText(url) {
         //$("#text-card").fadeIn(200);
         $('#text-card').addClass('animated slideInRight');
         $('#text-card').attr('style','visibility: visible');
-
-
-        // remove text-to-speech for now
-        //
-        // if (text.length > 0) {
-        //     window.speechSynthesis.speak(new SpeechSynthesisUtterance("Here are the words in this image."));
-        //     var msg = new SpeechSynthesisUtterance(text);
-        //     window.speechSynthesis.speak(msg);
-        //     console.log("words in image are", text);
-        //     processImageUploadText(url, text);
-        // } else {
-        //     var msg = new SpeechSynthesisUtterance("There are no words in this image.");
-        //     window.speechSynthesis.speak(msg);
-        // }
     })
 
     .fail(function(jqXHR, textStatus, errorThrown) {
@@ -223,5 +330,5 @@ function getImageText(url) {
 
 function processImage(url) {
     getDescription(url);
-    getImageText(url);
-}
+    // getImageText(url);
+};
