@@ -47,6 +47,7 @@ upload_btn.onclick = function () {
 */
 			//using swift sms gateway
 // 'https://secure.smsgateway.ca/SendSMS.aspx?CellNumber=16692516002&AccountKey=q38Y1fUBqc80IhY00p34n02Xn48Ldzm2&MessageBody="Your photo has been uploaded successfully!"'
+/*
 			var baseURL = 'https://secure.smsgateway.ca/SendSMS.aspx?'
 			var accountKey = 'q38Y1fUBqc80IhY00p34n02Xn48Ldzm2'
 			var destinationNumber = '16692516002'
@@ -57,7 +58,7 @@ upload_btn.onclick = function () {
 			client.get(targetURL, function(response) {
     			// do something/nothing with response
 			});
-
+*/
 /*
             //testing twilio...
             $.ajax({
