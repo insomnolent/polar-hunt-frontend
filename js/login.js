@@ -7,6 +7,12 @@ $(document).ready(function(){
 	var token;
 	var userId;
 
+
+  var loginAlert = document.getElementById("user-login");
+  var creationAlert = document.getElementById("user-creation");
+  var loginHTML = loginAlert.innerHTML;
+  var creationHTML = creationAlert.innerHTML;
+
 	var authURL="https://auth.conventionalize82.hasura-app.io/v1/"
 	var dataURL="https://data.conventionalize82.hasura-app.io/v1/"
 
@@ -26,13 +32,19 @@ $(document).ready(function(){
     	type: "POST",
     	dataType: "json"
   	}).done(function(json) {
+      creationAlert = document.getElementById("user-creation");
+      creationAlert.setAttribute("class", "alert alert-success");
+      creationAlert.innerHTML = "User creation successful!" + creationHTML;
+      creationAlert.style.display = "inherit";
     	alert('user created');
     	// Handle Response
     	// To save the auth token received to offline storage
     	var authToken = result.auth_token
     	window.localStorage.setItem('HASURA_AUTH_TOKEN', authToken);
   	}).fail(function(json, xhr, status, errorThrown) {
-    	alert('failed to create an account, please try again: ' + JSON.parse(json.responseText).message);
+      creationAlert = document.getElementById("user-creation");
+      creationAlert.innerHTML = JSON.parse(json.responseText).message + creationHTML;
+      creationAlert.style.display = "inherit";
     	console.log("Error: " + errorThrown);
     	console.log("Status: " + status);
     	console.dir(xhr);
@@ -58,13 +70,14 @@ $(document).ready(function(){
 			window.localStorage.setItem('isLoggedIn', true);
 			toggleDisplay(fuckthis);
     	token = data.auth_token;
+      window.localStorage.setItem('HASURA_AUTH_TOKEN', token);
     	userId = data.hasura_id;
     	userRoles = data.hasura_roles;
-    	//redirect to app
-    	alert('User logged in');
     	window.location = 'capture.html';
   	}).fail(function(data, xhr, status, errorThrown) {
-    	alert('failed to login, please try again! The error was ' + JSON.parse(data.responseText).message);
+      loginAlert = document.getElementById("user-login");
+      loginAlert.innerHTML = JSON.parse(data.responseText).message + loginHTML;
+      loginAlert.style.display = "inherit";
     	console.log("Error: " + errorThrown);
     	console.log("Status: " + status);
     	console.dir(xhr);
@@ -72,4 +85,12 @@ $(document).ready(function(){
 			toggleDisplay(fuckthis);
   	});
 	}); //login
-}) //document.ready
+}); //document.ready
+
+function dismissLoginAlert() {
+    document.getElementById("user-login").style.display = "none";
+}
+
+function dismissCreationAlert() {
+    document.getElementById("user-creation").style.display = "none";
+}

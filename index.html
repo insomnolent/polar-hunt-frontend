@@ -43,7 +43,7 @@
               <a class="nav-link" href="./map.html">Map</a>
             </li>
             <li class="nav-item logged" id="logout" onclick="">
-              Logout
+              <a class="nav-link" href="./logout.html">Logout</a>
             </li>
           </ul>
         </div>
@@ -55,8 +55,21 @@
       <div class="home-text text">
         BearHunt
       </div>
-      <!-- Page Content -->
+
       <div class="login-page">
+        <!-- alerts -->
+        <div class="alert alert-warning" role="alert" id="user-login">
+          <button type="button" class="close" aria-label="Close" onclick="dismissLoginAlert()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="alert alert-warning" role="alert" id="user-creation">
+          <button type="button" class="close" aria-label="Close" onclick="dismissCreationAlert()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- login form -->
         <div class="form">
           <form class="register-form">
             <input type="text" id="uname" placeholder="name"/>

@@ -16,8 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/full.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
-
+    <link href="css/logout.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -34,44 +33,38 @@
             <li class="nav-item" id="about">
               <a class="nav-link" href="./about.html">About</a>
             </li>
-            <li class="nav-item logged-in" id ="capture">
+            <li class="nav-item" id ="capture">
               <a class="nav-link" href="./capture.html">Capture Photo</a>
             </li>
-            <li class="nav-item logged-in" id="gallery">
+            <li class="nav-item" id="gallery">
               <a class="nav-link" href="./gallery.html">Gallery</a>
             </li>
-            <li class="nav-item logged-in" id="map">
+            <li class="nav-item" id="map">
               <a class="nav-link" href="./map.html">Map</a>
             </li>
-            <li class="nav-item logged-in" id="logout">
+            <li class="nav-item active" id="logout">
               <a class="nav-link" href="./logout.html">Logout</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Page Content
-    <div class="login-page">
-      <div class="form">
-        <form class="register-form">
-          <input type="text" id="uname" placeholder="name"/>
-          <input type="password" id="pwd" placeholder="password"/>
-          <input type="text" id="emailadd" placeholder="email address"/>
-          <button id="create" type="submit">create</button>
-          <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>
-        <form class="login-form">
-          <input type="text" id="loginname"placeholder="username"/>
-          <input type="password" id="loginpassword" placeholder="password"/>
-          <button id="login" type="submit">login</button>
-          <p class="message">Not registered? <a href="#">Create an account</a></p>
-        </form>
+    <!-- Page Content -->
+    <div class="align offset-3 offset-md-5 col-6 col-md-2">
+      <div class="alert alert-warning" role="alert" id="user-logout">
+        <button type="button" class="close" aria-label="Close" onclick="dismissLogoutAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div> -->
+      <br />
+      <button id="logoutbutton" type="button">logout</button>
+    </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/user.js"></script>
 
   </body>
 

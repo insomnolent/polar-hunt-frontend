@@ -4,15 +4,16 @@
   display: none;
 }
 
-.logged-in {
-  display: initial;
-}
-
 .login-page {
   width: 360px;
   padding: 1vh;
   margin: auto;
 }
+
+.alert {
+  display: none;
+}
+
 .form {
   position: relative;
   z-index: 1;
