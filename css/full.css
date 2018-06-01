@@ -39,6 +39,17 @@ body {
 .gallery-container {
 	padding-top: 100px;
 }
+.gallery-image {
+	width: 400px;
+	height: auto;
+}
+.gallery-recent-image {
+	font-size: 20px;
+	font-family: "Roboto", sans serif;
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+}
 
 .capture-text {
 	font-size: 20px;

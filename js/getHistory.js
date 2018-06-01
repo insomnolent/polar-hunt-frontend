@@ -48,33 +48,8 @@ function showDivs(n) {
             $("#picture1").attr('style','visibility: hidden');
             // $("#description1").attr('style','visibility: hidden');
         } else {
-            url += json[json.length-4].file_id;
-            document.querySelector("#picture1").src=url;
-        }
-        // var counter = 0;
-        if (json.length < 2) {
-            $("#picture2").attr('style','visibility: hidden');
-                    // $("#description2").attr('style','visibility: hidden');
-
-        } else {
-            url += json[json.length-3].file_id;
-            document.querySelector("#picture2").src=url;
-        }
-        if (json.length < 3) {
-            $("#picture3").attr('style','visibility: hidden');
-                    // $("#description3").attr('style','visibility: hidden');
-
-        } else {
-            url += json[json.length-2].file_id;
-            document.querySelector("#picture3").src=url;
-        }
-        if (json.length < 4) {
-            $("#picture4").attr('style','visibility: hidden');
-                    // $("#description4").attr('style','visibility: hidden');
-
-        } else {
             url += json[json.length-1].file_id;
-            document.querySelector("#picture4").src=url;
+            document.querySelector("#picture1").src=url;
         }
 
     }).fail(function(xhr, status, errorThrown) {
@@ -110,44 +85,11 @@ $.ajax({
     type: "POST",
     dataType: "json"
 }).done(function(json) {
-    console.log("JSON IS", json);
     if (json.length == 0) {
         $("#description1").attr('style','visibility: hidden');
     } else {
-        var text = json[json.length-4].info;
-        var words = json[json.length-4].words;
-        $("#description1").text(text);
-        $("#words1").text(noWords(words));
-    }
-    // var counter = 0;
-    if (json.length < 2) {
-        $("#description2").attr('style','visibility: hidden');
-
-    } else {
-        var text = json[json.length-3].info;
-        var words = json[json.length-3].words;
-        // document.querySelector("#description2") = text;
-        $("#description2").text(text);
-        $("#words2").text(noWords(words));
-    }
-    if (json.length < 3) {
-        $("#description3").attr('style','visibility: hidden');
-
-    } else {
-        var text = json[json.length-2].info;
-        var words = json[json.length-2].words;
-        // document.querySelector("#description3") = text;
-        $("#description3").text(text);
-        $("#words3").text(noWords(words));
-    }
-    if (json.length < 4) {
-        $("#description4").attr('style','visibility: hidden');
-    } else {
         var text = json[json.length-1].info;
-        var words = json[json.length-1].words;
-        // document.querySelector("#description1") = text;
-        $("#description4").text(text);
-        $("#words4").text(noWords(words));
+        $("#description1").text(text);
     }
 }).fail(function(xhr, status, errorThrown) {
     console.log("Error: " + errorThrown);
