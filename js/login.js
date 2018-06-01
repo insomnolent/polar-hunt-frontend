@@ -16,7 +16,7 @@ $(document).ready(function(){
 	var authURL="https://auth.conventionalize82.hasura-app.io/v1/"
 	var dataURL="https://data.conventionalize82.hasura-app.io/v1/"
 
-	toggleDisplay(fuckthis);
+	toggleDisplay();
 
 	$(create).click(function() {
   	$.ajax({
@@ -68,7 +68,7 @@ $(document).ready(function(){
     	dataType: "json"
   	}).done(function(data) {
 			window.localStorage.setItem('isLoggedIn', true);
-			toggleDisplay(fuckthis);
+			toggleDisplay();
     	token = data.auth_token;
       window.localStorage.setItem('HASURA_AUTH_TOKEN', token);
     	userId = data.hasura_id;
@@ -82,7 +82,7 @@ $(document).ready(function(){
     	console.log("Status: " + status);
     	console.dir(xhr);
 			window.localStorage.setItem('isLoggedIn', false);
-			toggleDisplay(fuckthis);
+			toggleDisplay();
   	});
 	}); //login
 }); //document.ready
