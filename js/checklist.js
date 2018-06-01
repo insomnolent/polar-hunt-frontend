@@ -9,7 +9,10 @@ var resetList = document.getElementById('reset');
 
 resetList.onclick = function() {
     console.log('hopefully cleared localStorage');
-    localStorage.clear();
+    var itemsToFind = ["bear", "banana", "fountain", "computers", "flowers", "piano", "ice_cream", "stadium", "pizza", "tree", "books"];
+    for(i=0; i<itemsToFind.length; i++){
+      localStorage.removeItem(itemsToFind[i]);
+    }
 };
 
 
@@ -35,14 +38,18 @@ function renderList() {
 	$(document).ready(function(){
         var list = "";
         for(i=0; i<itemsToFind.length; i++){
-        	if (localStorage.key(itemsToFind[i])) {
+          console.log(typeof localStorage.getItem(itemsToFind[i]));
+        	if (localStorage.getItem(itemsToFind[i]) !== null) {
         		list +="<li class='item checked' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
         	} else {
         		list +="<li class='item' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
         	}
 	    }
+
+      console.log(list);
 	    $("#myUL").append(list);
 
 	});
 }
+
 renderList();
