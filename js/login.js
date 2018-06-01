@@ -37,7 +37,7 @@ $(document).ready(function(){
       creationAlert.style.display = "inherit";
     	// Handle Response
     	// To save the auth token received to offline storage
-    	var authToken = result.auth_token
+    	var authToken = json.auth_token
     	window.localStorage.setItem('HASURA_AUTH_TOKEN', authToken);
   	}).fail(function(json, xhr, status, errorThrown) {
       creationAlert = document.getElementById("user-creation");
