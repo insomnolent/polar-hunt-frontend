@@ -7,7 +7,6 @@ $(document).ready(function(){
 	var token;
 	var userId;
 
-
   var loginAlert = document.getElementById("user-login");
   var creationAlert = document.getElementById("user-creation");
   var loginHTML = loginAlert.innerHTML;
@@ -33,10 +32,9 @@ $(document).ready(function(){
     	dataType: "json"
   	}).done(function(json) {
       creationAlert = document.getElementById("user-creation");
-      creationAlert.setAttribute("class", "alert alert-success");
+      creationAlert.setAttribute("class", "alert alert-success alert-dismissible");
       creationAlert.innerHTML = "User creation successful!" + creationHTML;
       creationAlert.style.display = "inherit";
-    	alert('user created');
     	// Handle Response
     	// To save the auth token received to offline storage
     	var authToken = result.auth_token
