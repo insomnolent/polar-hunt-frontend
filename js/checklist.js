@@ -1,65 +1,48 @@
-window.onload = function() {
-  // Create a "close" button and append it to each list item
-  var myNodelist = document.getElementsByTagName("LI");
-  // var i;
-  // for (i = 0; i < myNodelist.length; i++) {
-  //   var span = document.createElement("SPAN");
-  //   var txt = document.createTextNode("\u00D7");
-  //   span.className = "close";
-  //   span.appendChild(txt);
-  //   myNodelist[i].appendChild(span);
-  // }
+// to reset the list
+// var resetList = document.getElementById('resetList');
 
-  // Click on a close button to hide the current list item
-  // var close = document.getElementsByClassName("close");
-  // var i;
-  // for (i = 0; i < close.length; i++) {
-  //   close[i].onclick = function() {
-  //     var div = this.parentElement;
-  //     div.style.display = "none";
-  //   }
-  // }
+// resetList.onclick = function() {
+//      $(".item").attr('class', 'item');
+// };
 
-  console.log('test clicks');
+var resetList = document.getElementById('reset');
+
+resetList.onclick = function() {
+    console.log('hopefully cleared localStorage');
+    localStorage.clear();
+};
 
 
-  // Add a "checked" symbol when clicking on a list item
-  var list = document.querySelector('ul');
-  list.addEventListener('click', function(ev) {
-    if (ev.target.tagName === 'li') {
-      ev.target.classList.toggle('checked');
+var checkStorage = document.getElementById('checkStorage');
+
+checkStorage.onclick = function() {
+    console.log('local storage length', localStorage.length);
+    for (var i = 0; i < localStorage.length; i++){
+        console.log('localStorage key is ', localStorage.key(i));
+        console.log('localStorage pair is ', localStorage.getItem(localStorage.key(i)));
     }
-  }, false);
+};
 
-  var reset_list = document.getElementById('resetList');
-  reset_list.onclick = function() {
-    $(".item").attr('class', 'item');
-  }
+//var renderList = document.getElementById('#myUL');
+function renderList() {
+    // var item_found = document.getElementById(`${item}`);
+    // var item_id= "#" + `${item}`;
+    // console.log('does it reach here', item_id);
+    // $(`${item_id}`).attr('class', 'item checked');
 
-  // Create a new list item when clicking on the "Add" button
-  function newElement() {
-    var li = document.createElement("li");
-    var inputValue = document.getElementById("myInput").value;
-    var t = document.createTextNode(inputValue);
-    li.appendChild(t);
-    if (inputValue === '') {
-      alert("You must write something!");
-    } else {
-      document.getElementById("myUL").appendChild(li);
-    }
-    document.getElementById("myInput").value = "";
+    var itemsToFind = ["bear", "banana", "fountain", "computers", "flowers", "piano", "ice_cream", "stadium", "pizza", "tree", "books"];
 
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
+	$(document).ready(function(){
+        var list = "";
+        for(i=0; i<itemsToFind.length; i++){
+        	if (localStorage.key(itemsToFind[i])) {
+        		list +="<li class='item checked' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
+        	} else {
+        		list +="<li class='item' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
+        	}
+	    }
+	    $("#myUL").append(list);
 
-    for (i = 0; i < close.length; i++) {
-      close[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = "none";
-      }
-    }
-  }
+	});
 }
+renderList();

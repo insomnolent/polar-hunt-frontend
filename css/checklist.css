@@ -1,5 +1,9 @@
 /* Include the padding and border in an element's total width and height */
 
+.checklist {
+    width: 200px;
+}
+
 /* Remove margins and padding from the list */
 .checklist > ul {
     margin: 0;
@@ -14,6 +18,9 @@
     background: #eee;
     font-size: 12px;
     transition: 0.2s;
+
+    list-style-type: none;
+
 
     /* make the list items unselectable */
     -webkit-user-select: none;
