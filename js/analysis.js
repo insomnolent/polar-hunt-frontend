@@ -143,7 +143,6 @@ function checkOffItem(wordFound) {
     };
     var item_found = document.getElementById(`${item}`);
     var item_id= "#" + `${item}`;
-    console.log('does it reach here', item_id);
     $(`${item_id}`).attr('class', 'item checked');
     localStorage.setItem(`${item}`, true);
 };
