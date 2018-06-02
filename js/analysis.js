@@ -14,11 +14,15 @@ var HttpClient = function() {
     }
 }
 
+
 upload_btn.onclick = function () {
     if (! (file_input || file_input.files || file_input.files[0])) {
         upload_btn.innerHTML = 'Please select a file and try again';
         return;
     }
+    /*Fixed the authtoken thing for up here as well so its not a hard-coded user but from localStorage.getItem instead.*/
+    var authToken = window.localStorage.getItem('HASURA_AUTH_TOKEN');
+
     var url = "https://filestore.conventionalize82.hasura-app.io/v1/file/";
 
     var file = file_input.files[0];
@@ -26,7 +30,7 @@ upload_btn.onclick = function () {
         method: 'POST',
         body: file,
         headers: {
-          "Authorization": "Bearer 26f356ffccdf9f7bf02d3e1dce92bf28b0e12b37437be2cd"
+          "Authorization": "Bearer "+authToken
         },
         // By default, the session cookie is automatically used!
         credentials: 'include'
@@ -217,6 +221,10 @@ function getDescription(url) {
         // send to function in checklist.js to see if photo matches any words
         parseOutput(label);
 
+
+        /*small change to not get a hard-coded user auth token*/
+         var authToken = window.localStorage.getItem('HASURA_AUTH_TOKEN');
+
         // post url and description to the database
         $.ajax({
             url: "https://data.conventionalize82.hasura-app.io/v1/query/",
@@ -224,7 +232,7 @@ function getDescription(url) {
             // Request headers.
             beforeSend: function(xhrObj){
                 xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Authorization", "Bearer 26f356ffccdf9f7bf02d3e1dce92bf28b0e12b37437be2cd");
+                xhrObj.setRequestHeader("Authorization", "Bearer "+authToken);
             },
 
             type: "POST",

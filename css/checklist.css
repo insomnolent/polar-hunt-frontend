@@ -30,7 +30,7 @@
 }
 
 /* Darker background-color on hover */
-ul li:hover {
+.checklist > ul li:hover {
     background: #ddd;
 }
 
@@ -42,7 +42,7 @@ ul li.checked {
 }
 
 /* Add a "checked" mark when clicked on */
-ul li.checked::before {
+.checklist > ul li.checked::before {
     content: '';
     position: absolute;
     border-color: #fff;

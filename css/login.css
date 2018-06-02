@@ -1,10 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.logged {
+  display: none;
+}
+
 .login-page {
   width: 360px;
-  padding: 30vh 0 0;
+  padding: 1vh;
   margin: auto;
 }
+
+.alert {
+  display: none;
+}
+
 .form {
   position: relative;
   z-index: 1;

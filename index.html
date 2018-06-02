@@ -15,13 +15,14 @@
 
     <!-- Custom styles for this template -->
     <link href="css/full.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
 
   </head>
 
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-md navbar-custom fixed-top">
+    <nav class="navbar navbar-expand-md navbar-custom fixed-top" id="navbar">
       <div class="container">
         <a class="navbar-brand active" href="./index.html">BearHunt</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,20 +30,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item" id="about">
               <a class="nav-link" href="./about.html">About</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item logged" id ="capture">
               <a class="nav-link" href="./capture.html">Capture Photo</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item logged" id="gallery">
               <a class="nav-link" href="./gallery.html">Gallery</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item logged" id="map">
               <a class="nav-link" href="./map.html">Map</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./login.html">Login</a>
+            <li class="nav-item logged" id="logout" onclick="">
+              <a class="nav-link" href="./logout.html">Logout</a>
             </li>
           </ul>
         </div>
@@ -50,14 +51,49 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="home-text text">
-      BearHunt
+    <div>
+      <div class="home-text text">
+        BearHunt
+      </div>
+
+      <div class="login-page">
+        <!-- alerts -->
+        <div class="alert alert-warning alert-dismissible" role="alert" id="user-login">
+          <button type="button" class="close" aria-label="Close" onclick="dismissLoginAlert()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="alert alert-warning alert-dismissible" role="alert" id="user-creation">
+          <button type="button" class="close" aria-label="Close" onclick="dismissCreationAlert()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <!-- login form -->
+        <div class="form">
+          <form class="register-form">
+            <input type="text" id="uname" placeholder="name"/>
+            <input type="password" id="pwd" placeholder="password"/>
+            <input type="text" id="emailadd" placeholder="email address"/>
+            <button id="create" type="submit">create</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+          </form>
+          <form class="login-form">
+            <input type="text" id="loginname"placeholder="username"/>
+            <input type="password" id="loginpassword" placeholder="password"/>
+            <button id="login" type="submit">login</button>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
+          </form>
+        </div>
+      </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script type="text/JavaScript" src="js/toggle-display.js"></script>
+    <script src="js/login.js"></script>
   </body>
 
 </html>
