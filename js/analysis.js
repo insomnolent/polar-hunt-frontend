@@ -4,12 +4,12 @@ var file_input = document.getElementById('file_input');
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
-        anHttpRequest.onreadystatechange = function() { 
+        anHttpRequest.onreadystatechange = function() {
             if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
                 aCallback(anHttpRequest.responseText);
         }
 
-        anHttpRequest.open( "GET", aUrl, true );            
+        anHttpRequest.open( "GET", aUrl, true );
         anHttpRequest.send( null );
     }
 }
@@ -22,6 +22,7 @@ upload_btn.onclick = function () {
     }
     /*Fixed the authtoken thing for up here as well so its not a hard-coded user but from localStorage.getItem instead.*/
     var authToken = window.localStorage.getItem('HASURA_AUTH_TOKEN');
+    var number = window.localStorage.getItem('PHONENUMBER');
 
     var url = "https://filestore.conventionalize82.hasura-app.io/v1/file/";
 
@@ -37,7 +38,7 @@ upload_btn.onclick = function () {
     };
     upload_btn.innerHTML = 'Uploading...';
     var fileId;
-			
+
     fetch(url, requestOptions)
         .then(function(response) {
            upload_btn.innerHTML = 'Uploaded!';
@@ -52,18 +53,18 @@ upload_btn.onclick = function () {
 */
 			//using swift sms gateway
 // 'https://secure.smsgateway.ca/SendSMS.aspx?CellNumber=16692516002&AccountKey=q38Y1fUBqc80IhY00p34n02Xn48Ldzm2&MessageBody="Your photo has been uploaded successfully!"'
-/*
+
 			var baseURL = 'https://secure.smsgateway.ca/SendSMS.aspx?'
 			var accountKey = 'q38Y1fUBqc80IhY00p34n02Xn48Ldzm2'
-			var destinationNumber = '16692516002'
+			var destinationNumber = number
 			var message = '"Your photo has been uploaded successfully!"'
-			var targetURL = baseURL + 'CellNumber=' + destinationNumber + '&AccountKey=' 
+			var targetURL = baseURL + 'CellNumber=' + destinationNumber + '&AccountKey='
 						+ accountKey + '&MessageBody=' + message
            var client = new HttpClient();
 			client.get(targetURL, function(response) {
     			// do something/nothing with response
 			});
-*/
+
 /*
             //testing twilio...
             $.ajax({
@@ -163,7 +164,7 @@ function parseOutput(text) {
             checkOffItem(element);
         }
     });
-    
+
 };
 
 
@@ -188,7 +189,7 @@ function getDescription(url) {
     document.querySelector("#sourceImage").src = url;
     // $("#img-card").fadeIn(200);
     $('#img-card').addClass('animated slideInLeft');
-    $('#img-card').attr('style','visibility: visible');
+    $('#img-card').attr('style','display: inherit');
 
 
     // Perform the REST API call.
@@ -257,7 +258,7 @@ function getDescription(url) {
 
         $("#descriptionTextArea").text(label);
         $('#desc-card').addClass('animated slideInRight');
-        $('#desc-card').attr('style','visibility: visible');
+        $('#desc-card').attr('style','display: inherit');
 
         //var dataS = JSON.stringify(data);
     })
@@ -271,7 +272,7 @@ function getDescription(url) {
 };
 
 // get words from picture but for now not necessary
-// so I guess everything below here isn't necessary lmao 
+// so I guess everything below here isn't necessary lmao
 
 function getImageText(url) {
     var subscriptionKey = "b15fb91cceb144bba6c26757acd14956";
@@ -322,7 +323,7 @@ function getImageText(url) {
         }
         //$("#text-card").fadeIn(200);
         $('#text-card').addClass('animated slideInRight');
-        $('#text-card').attr('style','visibility: visible');
+        $('#text-card').attr('style','display: inherit');
     })
 
     .fail(function(jqXHR, textStatus, errorThrown) {

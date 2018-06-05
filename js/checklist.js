@@ -3,7 +3,7 @@ var resetList = document.getElementById('reset');
 resetList.onclick = function() {
 	// clear local storage
 	localStorage.clear();
-    
+
     // uncheck the items in checklist
     var itemsToFind = ["bear", "banana", "fountain", "computers", "flowers", "piano", "ice_cream", "stadium", "pizza", "tree", "books"];
 
@@ -43,16 +43,19 @@ function renderList() {
 	    		if (index > -1) {
 	    			itemsToFind.splice(index, 1);
 	    		}
-	    	} 
+	    	}
 	    }
 
         for(i=0; i<itemsToFind.length; i++){
-            console.log(typeof localStorage.getItem(itemsToFind[i]));
-        	if (localStorage.getItem(itemsToFind[i]) !== null) {
-        		list +="<li class='item checked' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
-        	} else {
-        		list +="<li class='item' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
-        	}
+          var cur = localStorage.getItem(itemsToFind[i]);
+          console.log(typeof cur);
+          if (itemsToFind[i] !== "HASURA_AUTH_TOKEN" && itemsToFind[i] !== "isLoggedIn") {
+        	  if ((cur !== null)) {
+        		  list +="<li class='item checked' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
+        	  } else {
+        		  list +="<li class='item' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
+        	  }
+          }
 	    }
 
       console.log(list);
