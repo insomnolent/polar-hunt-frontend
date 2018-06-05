@@ -97,7 +97,7 @@ function checkOffItem(wordFound) {
     var item = "";
     var item_found;
     var number = window.localStorage.getItem('PHONENUMBER');
-    //notify the user with SMS
+    //notify the user with SMS Gateway
 	var baseURL = 'https://secure.smsgateway.ca/SendSMS.aspx?'
 	var accountKey = 'q38Y1fUBqc80IhY00p34n02Xn48Ldzm2'
 	var destinationNumber = number
@@ -105,11 +105,28 @@ function checkOffItem(wordFound) {
 	// var message = '"Your photo has been uploaded successfully!"'
 	var targetURL = baseURL + 'CellNumber=' + destinationNumber + '&AccountKey='
 				+ accountKey + '&MessageBody=' + message
+
+    //using textlocal Messenger
+    var baseURL2 = 'https://api.txtlocal.com/send/?'
+    var accountKey2 = 'uU5Tj9uuqZI-P98M6IUf11DmnaLhubcgyGE9vPLrxZ'
+    var destinationNumber2 = '1'+number
+    var message2 = message
+    var targetURL2 = baseURL + 'apikey=' + accountKey2 + '&numbers='
+                + destinationNumber2 + '&message=' + message + '&sender=BearHunt'
+
+
    var client = new HttpClient();
+
+   //use SMS Gateway
 	client.get(targetURL, function(response) {
 		// do something/nothing with response
 	});
-	console.log(targetURL)
+
+    //or use textlocal
+    // client.get(targetURL2, function(response) {
+    //     // do something/nothing with response
+    // });
+
 
     switch (wordFound) {
         case "bear":
