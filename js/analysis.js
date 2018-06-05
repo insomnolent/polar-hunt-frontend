@@ -160,7 +160,6 @@ function parseOutput(text) {
 
     itemWords.forEach(function(element) {
         if (wordsInText.indexOf(element) > -1) {
-            console.log("yay it reaches the checkOffItem function");
             checkOffItem(element);
         }
     });
