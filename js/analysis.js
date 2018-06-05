@@ -22,6 +22,7 @@ upload_btn.onclick = function () {
     }
     /*Fixed the authtoken thing for up here as well so its not a hard-coded user but from localStorage.getItem instead.*/
     var authToken = window.localStorage.getItem('HASURA_AUTH_TOKEN');
+    console.log(authToken)
 
     var url = "https://filestore.conventionalize82.hasura-app.io/v1/file/";
 
