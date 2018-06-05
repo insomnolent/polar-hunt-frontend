@@ -22,6 +22,7 @@ upload_btn.onclick = function () {
     }
     /*Fixed the authtoken thing for up here as well so its not a hard-coded user but from localStorage.getItem instead.*/
     var authToken = window.localStorage.getItem('HASURA_AUTH_TOKEN');
+    var number = window.localStorage.getItem('PHONENUMBER');
 
     var url = "https://filestore.conventionalize82.hasura-app.io/v1/file/";
 
@@ -52,10 +53,10 @@ upload_btn.onclick = function () {
 */
 			//using swift sms gateway
 // 'https://secure.smsgateway.ca/SendSMS.aspx?CellNumber=16692516002&AccountKey=q38Y1fUBqc80IhY00p34n02Xn48Ldzm2&MessageBody="Your photo has been uploaded successfully!"'
-/*
+
 			var baseURL = 'https://secure.smsgateway.ca/SendSMS.aspx?'
 			var accountKey = 'q38Y1fUBqc80IhY00p34n02Xn48Ldzm2'
-			var destinationNumber = '16692516002'
+			var destinationNumber = number
 			var message = '"Your photo has been uploaded successfully!"'
 			var targetURL = baseURL + 'CellNumber=' + destinationNumber + '&AccountKey='
 						+ accountKey + '&MessageBody=' + message
@@ -63,7 +64,7 @@ upload_btn.onclick = function () {
 			client.get(targetURL, function(response) {
     			// do something/nothing with response
 			});
-*/
+
 /*
             //testing twilio...
             $.ajax({
@@ -147,7 +148,6 @@ function checkOffItem(wordFound) {
     };
     var item_found = document.getElementById(`${item}`);
     var item_id= "#" + `${item}`;
-    console.log('does it reach here', item_id);
     $(`${item_id}`).attr('class', 'item checked');
     localStorage.setItem(`${item}`, true);
 };

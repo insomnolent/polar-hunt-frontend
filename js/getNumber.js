@@ -15,7 +15,7 @@ $.ajax({
     dataType: "json"
 }).done(function(json) {
     // Handle Response
-    alert('test phone # stored')
+    // alert('test phone # stored')
     
     
      var phoneNumber =json.username;
