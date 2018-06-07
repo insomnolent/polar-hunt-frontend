@@ -150,6 +150,10 @@ function checkOffItem(wordFound) {
     var item_id= "#" + `${item}`;
     $(`${item_id}`).attr('class', 'item checked');
     localStorage.setItem(`${item}`, true);
+
+    // if image contains an item
+    // ("#textFound").text("You found the item: " + `${item}` + "!");
+    // document.getElementById("textFound").style.color = 'green';
 };
 
 
@@ -162,9 +166,10 @@ function parseOutput(text) {
     itemWords.forEach(function(element) {
         if (wordsInText.indexOf(element) > -1) {
             checkOffItem(element);
+            return true;
         }
     });
-
+    return false;
 };
 
 
@@ -216,10 +221,14 @@ function getDescription(url) {
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
 
         var label = data.description.captions[0].text;
-        console.log('description', label);
 
-        // send to function in checklist.js to see if photo matches any words
+        // send to parse function to see if photo matches any words
         parseOutput(label);
+        if (parseOutput(label) == false) {
+            // if image doesn't contain an item
+            ("#textFound").text("You did not find a checklist item!");
+            document.getElementById("textFound").style.color = 'red';
+        }
 
 
         /*small change to not get a hard-coded user auth token*/
@@ -259,6 +268,7 @@ function getDescription(url) {
         $("#descriptionTextArea").text(label);
         $('#desc-card').addClass('animated slideInRight');
         $('#desc-card').attr('style','display: inherit');
+
 
         //var dataS = JSON.stringify(data);
     })
