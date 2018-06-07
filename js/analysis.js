@@ -119,18 +119,18 @@ function checkOffItem(wordFound) {
    var client = new HttpClient();
 
    //use Swift SMS Gateway
-    console.log("targetURL: " + targetURL);
-	client.get(targetURL, function(response) {
-		// do something/nothing with response
-        console.log("Sent message using Swift SMS Gateway and received: " + response);
-	});
+ //    console.log("targetURL: " + targetURL);
+	// client.get(targetURL, function(response) {
+	// 	// do something/nothing with response
+ //        console.log("Sent message using Swift SMS Gateway and received: " + response);
+	// });
 
     // or use Textlocal Messenger
-    console.log("targetURL2: " + targetURL2);
-    client.get(targetURL2, function(response) {
-        // do something/nothing with response
-        console.log("Sent message using Textlocal Messenger and received: " + response);
-    });
+    // console.log("targetURL2: " + targetURL2);
+    // client.get(targetURL2, function(response) {
+    //     // do something/nothing with response
+    //     console.log("Sent message using Textlocal Messenger and received: " + response);
+    // });
 
 
     //using smsglobal
