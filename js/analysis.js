@@ -108,7 +108,7 @@ function checkOffItem(wordFound) {
 
     //using textlocal Messenger
     var baseURL2 = 'https://api.txtlocal.com/send/?'
-    // var accountKey2 = 'k8lyS53WV04-q8I5tpghwhUK2a2zjwxtgpfYTlTEjh'
+    var accountKey2 = 'k8lyS53WV04-q8I5tpghwhUK2a2zjwxtgpfYTlTEjh'
     //use this one later: 
     var destinationNumber2 = '1'+number
     var message2 = message
@@ -124,9 +124,9 @@ function checkOffItem(wordFound) {
 	});
 
     //or use textlocal
-    client.get(targetURL2, function(response) {
-        // do something/nothing with response
-    });
+    // client.get(targetURL2, function(response) {
+    //     // do something/nothing with response
+    // });
 
 
     switch (wordFound) {
