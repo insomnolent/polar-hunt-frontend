@@ -108,7 +108,8 @@ function checkOffItem(wordFound) {
 
     //using textlocal Messenger
     var baseURL2 = 'https://api.txtlocal.com/send/?'
-    var accountKey2 = '7ebfcee67ea4452db82b8a620cc81f70'
+    // var accountKey2 = 'k8lyS53WV04-q8I5tpghwhUK2a2zjwxtgpfYTlTEjh'
+    //use this one later: 
     var destinationNumber2 = '1'+number
     var message2 = message
     var targetURL2 = baseURL2 + 'apikey=' + accountKey2 + '&numbers='
@@ -118,9 +119,9 @@ function checkOffItem(wordFound) {
    var client = new HttpClient();
 
    //use SMS Gateway
-	// client.get(targetURL, function(response) {
-	// 	// do something/nothing with response
-	// });
+	client.get(targetURL, function(response) {
+		// do something/nothing with response
+	});
 
     //or use textlocal
     client.get(targetURL2, function(response) {

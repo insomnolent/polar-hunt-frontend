@@ -1,11 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-body {
+html, body {
   background: url("../img/comic-moar-color.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+  height: 100vh;
 }
 
 .text {
