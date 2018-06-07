@@ -99,7 +99,7 @@ function checkOffItem(wordFound) {
     var number = window.localStorage.getItem('PHONENUMBER');
     //notify the user with SMS Gateway
 	var baseURL = 'https://secure.smsgateway.ca/SendSMS.aspx?'
-	var accountKey = 'q38Y1fUBqc80IhY00p34n02Xn48Ldzm2'
+	var accountKey = 'INEMEiT3421e54lqh11c1bZm706pQ2M3'
 	var destinationNumber = number
 	var message = "You just found a " + wordFound + "! ~ BearHunt"
 	// var message = '"Your photo has been uploaded successfully!"'
