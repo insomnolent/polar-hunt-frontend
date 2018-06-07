@@ -182,6 +182,7 @@ function checkOffItem(wordFound) {
     var item_id= "#" + `${item}`;
     $(`${item_id}`).attr('class', 'item checked');
     localStorage.setItem(`${item}`, true);
+    return `${item}`;
 };
 
 
@@ -191,12 +192,18 @@ function parseOutput(text) {
     var wordsInText = text.split(" ");
     var itemWords = ["bear", "banana", "bananas", "fountain", "computer", "computers", "flower", "flowers", "piano", "ice_cream", "stadium", "pizza", "tree", "trees", "book", "books"];
 
-    itemWords.forEach(function(element) {
-        if (wordsInText.indexOf(element) > -1) {
-            checkOffItem(element);
+    for (v = 0; v < itemWords.length; v++) {
+        word = itemWords[v];
+        if (wordsInText.indexOf(word) > -1) {
+            thing = checkOffItem(itemWords[v]);
+            $("#foundItem").text('You found the item: '+ String(word));
+            $("#foundItem").attr('style', "color: green");
+            return;
         }
-    });
-
+    };
+    // if item was not found
+    $("#foundItem").text('You did not find an item');
+    $("#foundItem").attr('style', "color: red");
 };
 
 
@@ -248,11 +255,9 @@ function getDescription(url) {
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
 
         var label = data.description.captions[0].text;
-        console.log('description', label);
 
         // send to function in checklist.js to see if photo matches any words
         parseOutput(label);
-
 
         /*small change to not get a hard-coded user auth token*/
          var authToken = window.localStorage.getItem('HASURA_AUTH_TOKEN');
@@ -293,6 +298,7 @@ function getDescription(url) {
         $('#desc-card').attr('style','display: inherit');
 
         //var dataS = JSON.stringify(data);
+
     })
 
     .fail(function(jqXHR, textStatus, errorThrown) {
