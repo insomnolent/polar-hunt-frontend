@@ -2,10 +2,14 @@
 var resetList = document.getElementById('reset');
 resetList.onclick = function() {
 	// clear local storage
-	localStorage.clear();
-    
+	//localStorage.clear();
+
     // uncheck the items in checklist
     var itemsToFind = ["bear", "banana", "fountain", "computers", "flowers", "piano", "ice_cream", "stadium", "pizza", "tree", "books"];
+
+		for(i=0; i<itemsToFind.length; i++){
+      localStorage.removeItem(itemsToFind[i]);
+    }
 
     $(document).ready(function(){
         var list = "";
@@ -48,7 +52,7 @@ function renderList() {
 	    		if (index > -1) {
 	    			itemsToFind.splice(index, 1);
 	    		}
-	    	} 
+	    	}
 	    }
 
         for(i=0; i<itemsToFind.length; i++){

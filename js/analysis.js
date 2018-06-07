@@ -111,7 +111,7 @@ function checkOffItem(wordFound) {
     var accountKey2 = 'uU5Tj9uuqZI-P98M6IUf11DmnaLhubcgyGE9vPLrxZ'
     var destinationNumber2 = '1'+number
     var message2 = message
-    var targetURL2 = baseURL + 'apikey=' + accountKey2 + '&numbers='
+    var targetURL2 = baseURL2 + 'apikey=' + accountKey2 + '&numbers='
                 + destinationNumber2 + '&message=' + message + '&sender=BearHunt'
 
 
