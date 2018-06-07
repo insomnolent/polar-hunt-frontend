@@ -119,9 +119,9 @@ function checkOffItem(wordFound) {
    var client = new HttpClient();
 
    //use SMS Gateway
-	// client.get(targetURL, function(response) {
-	// 	// do something/nothing with response
-	// });
+	client.get(targetURL, function(response) {
+		// do something/nothing with response
+	});
 
     //or use textlocal
     client.get(targetURL2, function(response) {
