@@ -99,7 +99,7 @@ function checkOffItem(wordFound) {
     var number = window.localStorage.getItem('PHONENUMBER');
     //notify the user with SMS Gateway
 	var baseURL = 'https://secure.smsgateway.ca/SendSMS.aspx?'
-	var accountKey = 'q38Y1fUBqc80IhY00p34n02Xn48Ldzm2'
+	var accountKey = '7ebfcee67ea4452db82b8a620cc81f70'
 	var destinationNumber = number
 	var message = "You just found a " + wordFound + "!"
 	// var message = '"Your photo has been uploaded successfully!"'
@@ -108,7 +108,7 @@ function checkOffItem(wordFound) {
 
     //using textlocal Messenger
     var baseURL2 = 'https://api.txtlocal.com/send/?'
-    var accountKey2 = 'uU5Tj9uuqZI-P98M6IUf11DmnaLhubcgyGE9vPLrxZ'
+    var accountKey2 = '7ebfcee67ea4452db82b8a620cc81f70'
     var destinationNumber2 = '1'+number
     var message2 = message
     var targetURL2 = baseURL2 + 'apikey=' + accountKey2 + '&numbers='
