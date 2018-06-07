@@ -113,7 +113,7 @@ function checkOffItem(wordFound) {
     var destinationNumber2 = '1'+number
     var message2 = "You just found a " + wordFound + "!"
     var targetURL2 = baseURL2 + 'apikey=' + accountKey2 + '&numbers='
-                + destinationNumber2 + '&message=' + message + '&sender=BearHunt'
+                + destinationNumber2 + '&message=' + message2 + '&sender=BearHunt'
 
 
    var client = new HttpClient();
@@ -132,6 +132,23 @@ function checkOffItem(wordFound) {
         console.log("Sent message using Textlocal Messenger and received: " + response);
     });
 
+
+    //using smsglobal
+    var baseURL3 = 'https://api.smsglobal.com/http-api.php?action=sendsms'
+    var user3 = 'm9dkkcsc'
+    var password3 = 'TixAHt7N'
+    var destinationNumber3 = '1'+number
+    var message3 = "You just found a " + wordFound + "! Congrats! ~ BearHunt"
+    var targetURL3 = baseURL3 + '&user=' + user3 + '&password='
+                + password3 + '&&from=BearHunt' + 
+                '&to=' + destinationNumber3 +
+                '&text=' + message3
+
+    console.log("targetURL3: " + targetURL3);
+    client.get(targetURL2, function(response) {
+        // do something/nothing with response
+        console.log("Sent message using SMSGlobal and received: " + response);
+    });
 
     switch (wordFound) {
         case "bear":
