@@ -145,7 +145,7 @@ function checkOffItem(wordFound) {
                 '&text=' + message3
 
     console.log("targetURL3: " + targetURL3);
-    client.post(targetURL3, function(response) {
+    client.get(targetURL3, function(response) {
         // do something/nothing with response
         console.log("Sent message using SMSGlobal and received: " + response);
     });
