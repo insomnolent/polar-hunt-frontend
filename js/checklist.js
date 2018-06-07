@@ -38,7 +38,12 @@ function renderList() {
 
         for (k = 0; k < localStorage.length; k++) {
 	        if (localStorage.getItem(localStorage.key(k))) {
-	    		// list +="<li class='item checked' id='" + localStorage.key(k) + "'>" +localStorage.key(k)+"</li>";
+	        	if (localStorage.key(k) != "isLoggedIn" &&
+	        		localStorage.key(k) !=  "HASURA_AUTH_TOKEN" &&
+	        		localStorage.key(k) != "PHONENUMBER")
+	        	{
+	    		list +="<li class='item checked' id='" + localStorage.key(k) + "'>" +localStorage.key(k)+"</li>";
+	    		}
 	    		var index = itemsToFind.indexOf(localStorage.key(k));
 	    		if (index > -1) {
 	    			itemsToFind.splice(index, 1);
