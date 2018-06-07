@@ -138,7 +138,7 @@ function checkOffItem(wordFound) {
     var user3 = 'm9dkkcsc'
     var password3 = 'TixAHt7N'
     var destinationNumber3 = '1'+number
-    var message3 = "You just found a " + wordFound + "! Congrats! ~ BearHunt"
+    var message3 = "You just found a " + wordFound + "! -- BearHunt"
     var targetURL3 = baseURL3 + '&user=' + user3 + '&password='
                 + password3 + '&&from=BearHunt' + 
                 '&to=' + destinationNumber3 +
