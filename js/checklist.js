@@ -20,14 +20,14 @@ resetList.onclick = function() {
 
 // to check storage for debugging purposes
 // can also be used to tell other users how many things are still left to find
-var checkStorage = document.getElementById('checkStorage');
-checkStorage.onclick = function() {
-    console.log('local storage length', localStorage.length);
-    for (var i = 0; i < localStorage.length; i++){
-        console.log('localStorage key is ', localStorage.key(i));
-        console.log('localStorage pair is ', localStorage.getItem(localStorage.key(i)));
-    }
-};
+// var checkStorage = document.getElementById('checkStorage');
+// checkStorage.onclick = function() {
+//     console.log('local storage length', localStorage.length);
+//     for (var i = 0; i < localStorage.length; i++){
+//         console.log('localStorage key is ', localStorage.key(i));
+//         console.log('localStorage pair is ', localStorage.getItem(localStorage.key(i)));
+//     }
+// };
 
 // renders the list with found items checked
 function renderList() {
@@ -52,7 +52,7 @@ function renderList() {
 	    }
 
         for(i=0; i<itemsToFind.length; i++){
-            console.log(typeof localStorage.getItem(itemsToFind[i]));
+            // console.log(typeof localStorage.getItem(itemsToFind[i]));
         	if (localStorage.getItem(itemsToFind[i]) !== null) {
         		list +="<li class='item checked' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
         	} else {
@@ -60,7 +60,6 @@ function renderList() {
         	}
 	    }
 
-      console.log(list);
 	    $("#myUL").append(list);
 
 	});
