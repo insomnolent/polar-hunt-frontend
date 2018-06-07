@@ -2,10 +2,14 @@
 var resetList = document.getElementById('reset');
 resetList.onclick = function() {
 	// clear local storage
-	localStorage.clear();
-    
+	//localStorage.clear();
+
     // uncheck the items in checklist
     var itemsToFind = ["bear", "banana", "fountain", "computers", "flowers", "piano", "ice_cream", "stadium", "pizza", "tree", "books"];
+
+		for(i=0; i<itemsToFind.length; i++){
+      localStorage.removeItem(itemsToFind[i]);
+    }
 
     $(document).ready(function(){
         var list = "";
@@ -20,14 +24,14 @@ resetList.onclick = function() {
 
 // to check storage for debugging purposes
 // can also be used to tell other users how many things are still left to find
-var checkStorage = document.getElementById('checkStorage');
-checkStorage.onclick = function() {
-    console.log('local storage length', localStorage.length);
-    for (var i = 0; i < localStorage.length; i++){
-        console.log('localStorage key is ', localStorage.key(i));
-        console.log('localStorage pair is ', localStorage.getItem(localStorage.key(i)));
-    }
-};
+// var checkStorage = document.getElementById('checkStorage');
+// checkStorage.onclick = function() {
+//     console.log('local storage length', localStorage.length);
+//     for (var i = 0; i < localStorage.length; i++){
+//         console.log('localStorage key is ', localStorage.key(i));
+//         console.log('localStorage pair is ', localStorage.getItem(localStorage.key(i)));
+//     }
+// };
 
 // renders the list with found items checked
 function renderList() {
@@ -48,11 +52,11 @@ function renderList() {
 	    		if (index > -1) {
 	    			itemsToFind.splice(index, 1);
 	    		}
-	    	} 
+	    	}
 	    }
 
         for(i=0; i<itemsToFind.length; i++){
-            console.log(typeof localStorage.getItem(itemsToFind[i]));
+            // console.log(typeof localStorage.getItem(itemsToFind[i]));
         	if (localStorage.getItem(itemsToFind[i]) !== null) {
         		list +="<li class='item checked' id=" + itemsToFind[i] + ">" +itemsToFind[i]+"</li>";
         	} else {
@@ -60,7 +64,6 @@ function renderList() {
         	}
 	    }
 
-      console.log(list);
 	    $("#myUL").append(list);
 
 	});

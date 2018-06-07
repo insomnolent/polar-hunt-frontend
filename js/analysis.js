@@ -99,7 +99,7 @@ function checkOffItem(wordFound) {
     var number = window.localStorage.getItem('PHONENUMBER');
     //notify the user with SMS Gateway
 	var baseURL = 'https://secure.smsgateway.ca/SendSMS.aspx?'
-	var accountKey = 'q38Y1fUBqc80IhY00p34n02Xn48Ldzm2'
+	var accountKey = '7ebfcee67ea4452db82b8a620cc81f70'
 	var destinationNumber = number
 	var message = "You just found a " + wordFound + "!"
 	// var message = '"Your photo has been uploaded successfully!"'
@@ -194,7 +194,6 @@ function parseOutput(text) {
 
     itemWords.forEach(function(element) {
         if (wordsInText.indexOf(element) > -1) {
-            console.log("yay it reaches the checkOffItem function");
             checkOffItem(element);
         }
     });
