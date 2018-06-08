@@ -235,7 +235,7 @@ function parseOutput(text) {
 
 // gets description of picture
 function getDescription(url) {
-    var subscriptionKey = "b15fb91cceb144bba6c26757acd14956";
+    var subscriptionKey = "b3da74dabe79430cbe4f6acc6ccaa400";
 
     var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
 
